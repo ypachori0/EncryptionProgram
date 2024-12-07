@@ -1,0 +1,48 @@
+import random
+import string
+
+chars = " " + string.punctuation + string.digits + string.ascii_letters
+
+# turn the string into a list where each character is an individual element
+chars = list(chars)
+key = chars.copy()
+
+# shuffle the key
+random.shuffle(key)
+
+# print(f"chars: {chars}")
+# print(f"key  : {key}")
+
+## when someone types in a text they want to be encrypted,
+## we will replace an instance of one character within that string
+## with another one
+
+
+
+#ENCRYPT
+# ask for user input
+plain_text = input("Enter a message to encrypt: ") # message to be encrypted
+cipher_text = "" # encrypted text
+
+# iterate over every letter in plain text
+for letter in plain_text:
+    i = chars.index(letter)
+    cipher_text += key[i]
+
+# return cipher text
+print(f"Original message: {plain_text}")
+print(f"Encrypted message: {cipher_text}")
+
+#DECRYPT
+# ask for user input
+cipher_text = input("Enter a message to decrypt: ") # message to be decrypted
+plain_text = " " # decrypted message
+
+# iterate over every letter in cipher text
+for letter in cipher_text:
+    i = key.index(letter)
+    plain_text += chars[i]
+
+# return plain text
+print(f"Original message: {cipher_text}")
+print(f"Decrypted message: {plain_text}")
